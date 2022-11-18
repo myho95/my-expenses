@@ -3,10 +3,15 @@ import Card from "../UI/Card";
 import ExpenseForm from "./ExpenseForm";
 import "./NewExpense.css";
 
-const NewExpense = () => {
+const NewExpense = (props) => {
+  const expenseDataHandler = (expense) => {
+    const savedExpense = { ...expense };
+    console.log(savedExpense);
+    props.onAddExpense(savedExpense);
+  };
   return (
     <Card className="new-expense">
-      <ExpenseForm />
+      <ExpenseForm onSavedExpenseData={expenseDataHandler} />
     </Card>
   );
 };
